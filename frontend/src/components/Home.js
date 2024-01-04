@@ -51,7 +51,7 @@ export default function Home() {
                       Doctor
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                      CRUD 
+                      CRUD Patients
                     </Typography>
                 </CardContent>
                 <Button size="small" variant="contained" onClick={()=>navigate('doct')} sx={{margin:5}}>Login<LoginIcon></LoginIcon></Button>
