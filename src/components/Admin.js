@@ -1,4 +1,5 @@
-import React,{ useState } from 'react'
+import React,{ useState } from 'react';
+import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
 import {
   Input,  FormControl,  InputLabel,  FormHelperText,  Checkbox,  Switch,  FormControlLabel,    Stack,  Button,  TextField, Typography } from "@mui/material";
@@ -22,7 +23,9 @@ export default function Admin() {
   return (
     <div>
     <Typography gutterBottom variant='h3' align='center'><h2 style={{ color: "Blue" }}>Login for admin</h2></Typography>
-    <form align='center' style={{ paddingTop: "10px", paddingLeft: "500px" }}>
+
+    <Grid container justifyContent="center">
+    <form align='center' style={{ paddingTop: "10px" }}>
       <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
         <FormControl>
           <InputLabel htmlFor="fname">First Name</InputLabel>
@@ -150,6 +153,7 @@ export default function Admin() {
     return back
   </Button>
     </form>
+    </Grid>
   </div>
     
   )
