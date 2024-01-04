@@ -1,6 +1,7 @@
 import React,{ useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import {
-  Input,  FormControl,  InputLabel,  FormHelperText,  Checkbox,  Switch,  FormControlLabel,    Stack,  Button,  TextField } from "@mui/material";
+  Input,  FormControl,  InputLabel,  FormHelperText,  Checkbox,  Switch,  FormControlLabel,    Stack,  Button,  TextField, Typography } from "@mui/material";
 
 
 export default function Admin() {
@@ -15,12 +16,13 @@ export default function Admin() {
   const [checked, setChecked] = useState(false);
   const [checkedUpdates, setCheckedUpdates] = useState(true);
 
+  const navigate=useNavigate()
 
 
   return (
     <div>
-    <h2 style={{ color: "Blue" }}>Login for admin</h2>
-    <form style={{ paddingTop: "10px", paddingLeft: "500px" }}>
+    <Typography gutterBottom variant='h3' align='center'><h2 style={{ color: "Blue" }}>Login for admin</h2></Typography>
+    <form align='center' style={{ paddingTop: "10px", paddingLeft: "500px" }}>
       <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
         <FormControl>
           <InputLabel htmlFor="fname">First Name</InputLabel>
@@ -47,7 +49,7 @@ export default function Admin() {
         </FormControl>
       </Stack>
       <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
-        <FormControl>
+        <FormControl >
           <InputLabel htmlFor="email">Email address</InputLabel>
           <Input
             id="email"
@@ -59,7 +61,7 @@ export default function Admin() {
             We will never share your email.
           </FormHelperText>
         </FormControl>
-        <FormControl>
+        <FormControl >
           <InputLabel htmlFor="phnNumber">Phone Number</InputLabel>
           <Input
             id="phnNumber"
@@ -81,8 +83,11 @@ export default function Admin() {
               onChange={(e) => setDateOfBirth(e.target.value)}
             ></TextField>
           }
-          label="Select you date of "
-        />
+          
+      />
+      <Typography style={{ paddingTop: "10px", paddingLeft: "50px" }}>
+  <p>Select your date of birth</p>
+</Typography>
       </Stack>
       <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
         <FormControl>
@@ -139,8 +144,11 @@ export default function Admin() {
         </FormControl>
       </Stack>
       <Button variant="contained" color="success" type="submit">
-        Register
+        Add admin
       </Button>
+      <Button variant="contained" sx={{margin:5}} onClick={() => navigate('/')}>
+    return back
+  </Button>
     </form>
   </div>
     
