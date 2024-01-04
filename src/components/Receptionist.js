@@ -1,9 +1,14 @@
 import React from 'react'
+import Header from './rcomponents/Header'
+import Form from './rcomponents/From'
+
 
 export default function Receptionist() {
   return (
     <div>
-        <h1>Receptionist</h1>
+       <Header></Header>
+       <Form></Form>
+      
     </div>
   )
 }
