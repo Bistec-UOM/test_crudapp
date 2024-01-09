@@ -18,6 +18,7 @@ function App() {
       <Route path='doct' element={<Doctor/>}></Route>
       <Route path='pharm' element={<Pharmacy/>}></Route>
       <Route path='lab' element={<Lab/>}></Route>
+      
     </Routes>
     </BrowserRouter>
     </>

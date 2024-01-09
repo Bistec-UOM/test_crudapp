@@ -1,9 +1,16 @@
-import React,{ useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import {
   Input,  FormControl,  InputLabel,  FormHelperText,  Checkbox,  Switch,  FormControlLabel,    Stack,  Button,  TextField, Typography } from "@mui/material";
-
+  import Table from '@mui/material/Table';
+  import TableBody from '@mui/material/TableBody';
+  import TableCell from '@mui/material/TableCell';
+  import TableContainer from '@mui/material/TableContainer';
+  import TableHead from '@mui/material/TableHead';
+  import TableRow from '@mui/material/TableRow';
+  import Paper from '@mui/material/Paper';
 
 export default function Admin() {
 
@@ -18,6 +25,35 @@ export default function Admin() {
   const [checkedUpdates, setCheckedUpdates] = useState(true);
 
   const navigate=useNavigate()
+  function addMember() {
+    var payload = {
+      firstName,
+      lastName,
+      email,
+      phnNumber,
+      dateOfBirth,
+      password,
+      cnfpassword,
+      checked,
+      checkedUpdates
+    };
+    axios.post('https://localhost:7054/api/Admin_DataAPI', payload).then((response) => {
+      navigate('/lab');
+    });
+  }
+ 
+    const [all_d, set_d] = useState([]);
+  
+    useEffect(() => {
+      axios.get("https://localhost:7054/api/Admin_DataAPI")
+        .then((response) => {
+          set_d(response.data || []);
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+    }, []);
+
 
 
   return (
@@ -146,7 +182,7 @@ export default function Admin() {
           />
         </FormControl>
       </Stack>
-      <Button variant="contained" color="success" type="submit">
+      <Button variant="contained" color="success" type="submit" onClick={addMember}>
         Add admin
       </Button>
       <Button variant="contained" sx={{margin:5}} onClick={() => navigate('/')}>
@@ -154,6 +190,41 @@ export default function Admin() {
   </Button>
     </form>
     </Grid>
+    <br/>
+
+    <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell align="right">First Name</TableCell>
+              <TableCell align="right">Secound Name</TableCell>
+              <TableCell align="right">Email</TableCell>
+              <TableCell align="right">Phone Number</TableCell>
+              <TableCell align="right">Date Of Birth</TableCell>
+              {/* Adjust TableCell headers accordingly */}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {all_d.map((row) => (
+              <TableRow
+                key={row.id} // Ensure the key matches a unique identifier in your data
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.id}
+                </TableCell>
+                <TableCell align="right">{row.firstName}</TableCell>
+                <TableCell align="right">{row.lastName}</TableCell>
+                <TableCell align="right">{row.email}</TableCell>
+                <TableCell align="right">{row.phnNumber}</TableCell>
+                <TableCell align="right">{row.dateOfBirth}</TableCell>
+                {/* Adjust TableCell data accordingly */}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
   </div>
     
   )
