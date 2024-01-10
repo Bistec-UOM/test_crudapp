@@ -37,7 +37,7 @@ export default function Admin() {
       checked,
       checkedUpdates
     };
-    axios.post('https://localhost:7054/api/Admin_DataAPI', payload).then((response) => {
+    axios.post('https://localhost:7017/api/Admin_DataAPI', payload).then((response) => {
       navigate('/lab');
     });
   }
@@ -45,7 +45,7 @@ export default function Admin() {
     const [all_d, set_d] = useState([]);
   
     useEffect(() => {
-      axios.get("https://localhost:7054/api/Admin_DataAPI")
+      axios.get("https://localhost:7017/api/Admin_DataAPI")
         .then((response) => {
           set_d(response.data || []);
         })
