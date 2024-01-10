@@ -24,3 +24,4 @@ yarn-error.log*
 
 #ignore backend
 back end/*
+.github/*
