@@ -8,5 +8,6 @@ namespace back_end.Controllers
     public class LabController : ControllerBase
     {
         //new comment added
+
     }
 }
