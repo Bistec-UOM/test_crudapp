@@ -5101,11 +5101,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dhammika Mahendra\\Documents\\Code Test\\SW project practice\\testCRUD\\test_crudapp\\back end\\back end\\back end.csproj",
+      "projectUniqueName": "C:\\Users\\Dhammika Mahendra\\Documents\\Code Test\\SW project practice\\test CRUD backend\\test_crudapp\\back end\\back end\\back end.csproj",
       "projectName": "back end",
-      "projectPath": "C:\\Users\\Dhammika Mahendra\\Documents\\Code Test\\SW project practice\\testCRUD\\test_crudapp\\back end\\back end\\back end.csproj",
+      "projectPath": "C:\\Users\\Dhammika Mahendra\\Documents\\Code Test\\SW project practice\\test CRUD backend\\test_crudapp\\back end\\back end\\back end.csproj",
       "packagesPath": "C:\\Users\\Dhammika Mahendra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dhammika Mahendra\\Documents\\Code Test\\SW project practice\\testCRUD\\test_crudapp\\back end\\back end\\obj\\",
+      "outputPath": "C:\\Users\\Dhammika Mahendra\\Documents\\Code Test\\SW project practice\\test CRUD backend\\test_crudapp\\back end\\back end\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dhammika Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",
