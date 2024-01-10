@@ -1,5 +1,6 @@
+import { Container } from "react-bootstrap"
 import { TextField, Typography } from "@mui/material";
-import Container from "@mui/material/Container";
+
 import { useState } from "react";
 
 import dayjs from 'dayjs';
@@ -9,18 +10,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Button from "@mui/material/Button";
 
-
-
-
-
-
-const Form=({alist,setAList,count,setCount,name ,setName,address, setAddress, nic,setNic, timevalue, setTimeValue,nameError,setNameError,addressError,setAddressError,nicError,setNicError,timevalueError,setTimeValueError})=>
+const EditPage=({alist,setAList,count,setCount,name ,setName,address, setAddress, nic,setNic, timevalue, setTimeValue,nameError,setNameError,addressError,setAddressError,nicError,setNicError,timevalueError,setTimeValueError})=>
 {
 
-    
-
-
-   
 
     const handleSubmit=(event)=>
     {
@@ -66,11 +58,9 @@ const Form=({alist,setAList,count,setCount,name ,setName,address, setAddress, ni
       
     }
 
-   
 
     return <div>
-        
-        <Container>
+          <Container>
             <Typography textAlign="center" variant="h4" color="GrayText"   marginBottom="25px" marginTop="10px">Make your Appointment</Typography>
         <form autoComplete="false" noValidate onSubmit={handleSubmit}>
             <TextField error={nameError} sx={{marginBottom:3}} required value={name}  onChange={(e)=>{
@@ -104,14 +94,7 @@ const Form=({alist,setAList,count,setCount,name ,setName,address, setAddress, ni
       </DemoContainer>
     </LocalizationProvider>
 
-    <Button sx={{
-        marginTop:3,
-        marginBottom:5,
-        backgroundColor: '#79CCBE', // Replace with your desired color
-        '&:hover': {
-          backgroundColor: '#79CCBE', // Replace with your desired hover color
-        },
-      }} variant="contained"  type="submit" >Add</Button>
+    <Button sx={{marginTop:3, color: '#09D636',marginBottom:3}} variant="outlined"  type="submit" >Add</Button>
     
            
             
@@ -120,10 +103,8 @@ const Form=({alist,setAList,count,setCount,name ,setName,address, setAddress, ni
 
         </Container>
 
-     
-       
-        
+
     </div>
 }
 
-export default Form;
+export default EditPage;
