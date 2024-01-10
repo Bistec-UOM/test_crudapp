@@ -7,6 +7,6 @@ namespace back_end.Controllers
     [ApiController]
     public class LabController : ControllerBase
     {
-
+        //new comment added
     }
 }
