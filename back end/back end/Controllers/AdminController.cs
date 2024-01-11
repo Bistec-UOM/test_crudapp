@@ -1,23 +1,25 @@
 ﻿using back_end.Data;
 using back_end.Models.Dto;
 using back_end.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back_end.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AdminController : ControllerBase
     {
+       
 
+          private readonly ApplicationDbContext _db;
         //for admin things
-        [Route("api/[controller]")]
-        [ApiController]
-        public class Admin_DataAPIController : ControllerBase
-        {
-            private readonly ApplicationDbContext _db;
-            public Admin_DataAPIController(ApplicationDbContext db)
+    
+        public AdminController(ApplicationDbContext db)
             {
                 _db = db;
             }
+
             [HttpGet]
             public ActionResult<IEnumerable<Admin_DataDto>> GetData()
             {
@@ -61,7 +63,9 @@ namespace back_end.Controllers
                 _db.SaveChanges();
                 return NoContent();
             }
-        }
-        //end of admin
+        
+
     }
 }
+
+
