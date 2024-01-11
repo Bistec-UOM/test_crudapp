@@ -6,6 +6,7 @@ import AppointmentList from './rcomponents/AppointmentList'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import EditPage from './rcomponents/EditPage'
 import dayjs from 'dayjs'
+import { useEffect } from 'react'
 
 
 export default function Receptionist() {
@@ -25,6 +26,22 @@ export default function Receptionist() {
   
    
     const [timevalue, setTimeValue] = useState(dayjs('2022-04-17T15:30'));
+
+
+    useEffect(()=>
+    {
+     fetch("https://localhost:7017/api/appointmentapi").then((response)=>
+     {
+       return response.json();
+     }).then((responseData)=>
+     {
+       console.log(responseData);
+       setAList(responseData);
+     })
+ 
+    },[count]);
+
+    
 
 
 

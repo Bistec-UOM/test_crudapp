@@ -17,6 +17,12 @@ builder.Services.AddDbContext<AppointmentDbContext>(options =>
 }
 
 );
+builder.Services.AddDbContext<AdminDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
+}
+
+);
 
 builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
 {

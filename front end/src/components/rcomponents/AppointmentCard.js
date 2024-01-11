@@ -35,6 +35,15 @@ const AppointmentCard = ({
     setOpen(true);
   };
 
+  const formatTime = (time) => {
+    return new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true, // Set to true for AM/PM format
+    }).format(new Date(time));
+  };
+  
+
   return (
     <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
       <Card
@@ -54,7 +63,7 @@ const AppointmentCard = ({
           <Typography variant="body2" color="text.secondary">
             {item.nic}
             <br />
-            {item.timevalue}
+            {formatTime(item.time)}
           </Typography>
         </CardContent>
         <CardActions>

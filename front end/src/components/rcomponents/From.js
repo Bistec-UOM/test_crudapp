@@ -8,6 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Button from "@mui/material/Button";
+import axios from "axios";
 
 
 
@@ -22,7 +23,7 @@ const Form=({alist,setAList,count,setCount,name ,setName,address, setAddress, ni
 
    
 
-    const handleSubmit=(event)=>
+ async function  handleSubmit(event)
     {
         event.preventDefault();
         if(nameError==true)
@@ -53,13 +54,36 @@ const Form=({alist,setAList,count,setCount,name ,setName,address, setAddress, ni
 
         if(name && address && nic)
         {
-            setAList([...alist,{name:name,address:address,nic:nic,timevalue:timevalue.format('hh:mm A')}]);
-            setCount(count+1)
-            console.log(typeof(timevalue))
-            setName("")
-            setAddress("")
-            setNic("")
-            setTimeValue(dayjs('2022-04-17T15:30'))
+            try{
+                await axios.post("https://localhost:7017/api/appointmentapi",
+                {
+                    name:name,
+                    address:address,
+                    nic:nic,
+                    time:timevalue.format('hh:mm A')
+    
+                });
+                console.log("Student inserted succesfully!");
+               
+                setCount(count+1)
+                console.log(typeof(timevalue))
+                setName("")
+                setAddress("")
+                setNic("")
+                setTimeValue(dayjs('2022-04-17T15:30'))
+               
+            }
+            catch(err)
+            {
+            var msg=err.response.data;
+               console.log(err.response.data);
+               //setError(msg);
+            }
+            
+
+
+            // setAList([...alist,{name:name,address:address,nic:nic,timevalue:timevalue.format('hh:mm A')}]);
+           
 
         }
 
