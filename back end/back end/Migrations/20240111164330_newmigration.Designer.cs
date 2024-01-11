@@ -11,9 +11,9 @@ using back_end.Data;
 
 namespace back_end.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240110160634_M-admin")]
-    partial class Madmin
+    [DbContext(typeof(AdminDbContext))]
+    [Migration("20240111164330_newmigration")]
+    partial class newmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

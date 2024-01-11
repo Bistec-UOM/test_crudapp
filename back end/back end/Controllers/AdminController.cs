@@ -12,10 +12,10 @@ namespace back_end.Controllers
     {
        
 
-          private readonly ApplicationDbContext _db;
+          private readonly AdminDbContext _db;
         //for admin things
     
-        public AdminController(ApplicationDbContext db)
+        public AdminController(AdminDbContext db)
             {
                 _db = db;
             }
