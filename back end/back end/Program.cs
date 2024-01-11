@@ -20,7 +20,7 @@ builder.Services.AddCors(options => {
         );
 });
 
-builder.Services.AddDbContext<ApplicationDbContext>(option =>
+builder.Services.AddDbContext<AdminDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
 });
