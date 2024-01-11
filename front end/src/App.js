@@ -17,7 +17,6 @@ function App() {
       <Route path='recep' element={<Receptionist/>}></Route>
       <Route path='doct' element={<Doctor/>}></Route>
       <Route path='pharm' element={<Pharmacy/>}></Route>
-      <Route path='lab' element={<Lab/>}></Route>
     </Routes>
     </BrowserRouter>
     </>
