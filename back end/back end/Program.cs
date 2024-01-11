@@ -25,6 +25,7 @@ builder.Services.AddDbContext<AdminDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
 });
 
+
 var app = builder.Build();
 
 

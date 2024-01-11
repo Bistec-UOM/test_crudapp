@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back_end.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class AdminDbContext : DbContext
     {
-        public ApplicationDbContext()
+        public AdminDbContext()
         {
         }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public AdminDbContext(DbContextOptions<AdminDbContext> options) : base(options)
         {
         }
         public DbSet<Admin_Data> admin_Datas { get; set; }
