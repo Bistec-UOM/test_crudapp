@@ -10,8 +10,8 @@ namespace back_end.Controllers
     [ApiController]
     public class AppointmentApiController:ControllerBase
     {
-        private readonly ApplicationDbContext _db;
-        public AppointmentApiController(ApplicationDbContext db)
+        private readonly AppointmentDbContext _db;
+        public AppointmentApiController(AppointmentDbContext db)
         {
             _db = db;
         }

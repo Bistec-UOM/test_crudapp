@@ -12,8 +12,8 @@ using back_end.Data;
 namespace back_end.Migrations
 {
     [DbContext(typeof(AppointmentDbContext))]
-    [Migration("20240110144619_Connected database ")]
-    partial class Connecteddatabase
+    [Migration("20240111162858_newly added migrations")]
+    partial class newlyaddedmigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,12 +41,42 @@ namespace back_end.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("nic")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("time")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            address = "colombo",
+                            name = "chathura",
+                            nic = "2100143433",
+                            time = new DateTime(2024, 1, 10, 14, 30, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            address = "kandy",
+                            name = "kamal",
+                            nic = "987655242",
+                            time = new DateTime(2024, 1, 10, 16, 30, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            address = "jaffna",
+                            name = "amal",
+                            nic = "99671234",
+                            time = new DateTime(2024, 1, 10, 15, 30, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -4,9 +4,9 @@ using System.Net;
 
 namespace back_end.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class AppointmentDbContext:DbContext
     {
-        public ApplicationDbContext(DbContextOptions option):base(option)
+        public AppointmentDbContext(DbContextOptions option):base(option)
         {
 
             
