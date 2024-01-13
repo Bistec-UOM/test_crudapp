@@ -34,7 +34,10 @@ builder.Services.AddDbContext<AppointmentDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
 });
 
-
+builder.Services.AddDbContext<LabContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
+});
 
 var app = builder.Build();
 
