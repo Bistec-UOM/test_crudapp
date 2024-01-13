@@ -3,7 +3,12 @@
     "",
     "\\.github",
     "\\back end",
-    "\\back end\\back end"
+    "\\back end\\back end",
+    "\\back end\\back end\\Controllers",
+    "\\back end\\back end\\Data",
+    "\\back end\\back end\\Migrations",
+    "\\back end\\back end\\Models"
   ],
+  "SelectedNode": "\\back end\\back end.sln",
   "PreviewInSolutionExplorer": false
 }
