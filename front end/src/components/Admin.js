@@ -219,7 +219,6 @@ export default function Admin() {
                 <TableCell align="right">{row.email}</TableCell>
                 <TableCell align="right">{row.phnNumber}</TableCell>
                 <TableCell align="right">{row.dateOfBirth}</TableCell>
-                {/* Adjust TableCell data accordingly */}
               </TableRow>
             ))}
           </TableBody>
