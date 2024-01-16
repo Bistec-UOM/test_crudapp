@@ -48,6 +48,30 @@ namespace back_end.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id}")]
+        public ActionResult<Appointment> UpdateAppointment(int id, [FromBody] Appointment appointment)
+        {
+            if(appointment == null)
+            {
+                return BadRequest("Invalid data.please provide valid appointment details");
+            }
+            Appointment upappointment = new();
+            {
+                upappointment.Id = id;
+                upappointment.name = appointment.name;
+                upappointment.nic=appointment.nic;
+                upappointment.address= appointment.address;
+                upappointment.time= appointment.time;
+            }
+
+            _db.appointments.Update(upappointment);
+            _db.SaveChanges();
+            return Ok(upappointment) ;
+
+
+
+        }
+
 
     }
 }
