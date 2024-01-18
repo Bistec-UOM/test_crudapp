@@ -22,7 +22,7 @@ namespace back_end.Controllers
 
         public async Task<ActionResult<IEnumerable<Doctor>>> Getpatients()
         {
-            if (_DoctorContext.patients== null)
+            if (_DoctorContext.patients == null)
             {
                 return NotFound();
             }
@@ -50,10 +50,31 @@ namespace back_end.Controllers
 
         public async Task<ActionResult<Doctor>> Postpatient(Doctor x)
         {
-           _DoctorContext.patients.Add(x);
+            _DoctorContext.patients.Add(x);
             await _DoctorContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(Getpatient), new { id = x.ID }, x);
         }
-    }
+
+        [HttpDelete("{id}")]
+
+        public async Task<ActionResult> Deletepatient(int id)
+        {
+            if (_DoctorContext.patients == null)
+            {
+                return NotFound();
+            }
+            var employee = await _DoctorContext.patients.FindAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            _DoctorContext.patients.Remove(employee);
+            await _DoctorContext.SaveChangesAsync();
+
+            return Ok();
+        }
+       
+
+        }
 }
