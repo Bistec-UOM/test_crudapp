@@ -101,7 +101,7 @@ const Employees = () => {
   );
 };
 
-function App() {
+function Doctor() {
   return (
     <div className="App">
       <h1>Add Patients</h1>
@@ -113,4 +113,4 @@ function App() {
   );
 }
 
-export default App;
+export default Doctor;
