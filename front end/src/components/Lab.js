@@ -9,6 +9,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Popover from '@mui/material/Popover';
 import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
+import axios from 'axios';
 
 export default function Lab() {
   //for deleting confirm popup
@@ -39,6 +40,8 @@ export default function Lab() {
   const [edit,setEdit]=useState(false)
   const [del,setDel]=useState(false)
 
+  const [data,setData]=useState([])//where data fetched by get request are stored
+
   //for clear button
   const clearData=()=>{
     setName('')
@@ -51,8 +54,28 @@ export default function Lab() {
     setEProv('')
   }
 
+  const fetchData=()=>{
+    axios.get('https://localhost:44375/api/Lab')
+    .then((result)=>{
+      setData(result.data)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+
   const sendData=()=>{
-      console.log(name+' '+amount+' '+prov+' '+dur);
+    const data={
+      'name':name,
+      'amount':amount,
+      'dur':dur,
+      'prov':prov
+    }
+    axios.post('https://localhost:44375/api/Lab',data)
+    .then((result)=>{
+      fetchData()
+      clearData()
+    })
   }
 
   const deleteData=()=>{
@@ -85,7 +108,8 @@ export default function Lab() {
 
   useEffect(()=>{
     document.body.style.backgroundColor = "#e8f1ff"
-  })
+    fetchData()
+  },[])
 
   return (
     <div>
@@ -109,7 +133,7 @@ export default function Lab() {
              </Select>
             </FormControl>
             <FormControl sx={{minWidth: 120 }} size='small'>
-              <InputLabel id="prov">Duration</InputLabel>
+              <InputLabel id="prov">Provider</InputLabel>
               <Select labelId='prov' label='Provider' value={prov} onChange={(e)=>setProv(e.target.value)}>
                   <MenuItem value={'Hemas'}>Hemas</MenuItem>
                   <MenuItem value={'Asiri'}>Asiri</MenuItem>
@@ -142,17 +166,17 @@ export default function Lab() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {data.map((row) => (
                   <TableRow
-                    key={row.name}
+                    key={row.id}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
                       {row.name}
                     </TableCell>
                     <TableCell align="right">{row.amount}</TableCell>
-                    <TableCell align="right">{row.duration}</TableCell>
-                    <TableCell align="right">{row.provider}</TableCell>
+                    <TableCell align="right">{row.dur}</TableCell>
+                    <TableCell align="right">{row.prov}</TableCell>
                     <TableCell align="right" >
                       <div >
                           <DeleteForeverIcon color='error' sx={{cursor:'pointer'}} onClick={handleClick} >
@@ -211,7 +235,7 @@ export default function Lab() {
              </Select>
             </FormControl>
             <FormControl sx={{minWidth: 120 }} size='small'>
-              <InputLabel id="prov">Duration</InputLabel>
+              <InputLabel id="prov">Provider</InputLabel>
               <Select labelId='prov' label='Provider' value={provE} onChange={(e)=>setEProv(e.target.value)}>
                   <MenuItem value={'Hemas'}>Hemas</MenuItem>
                   <MenuItem value={'Asiri'}>Asiri</MenuItem>
