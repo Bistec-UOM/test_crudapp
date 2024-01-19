@@ -1,38 +1,74 @@
 import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import { TableCell, TableHead, TableRow, Typography } from '@mui/material'
+import IconButton from '@mui/material/IconButton';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
+import MenuIcon from '@mui/icons-material/Menu';
+import TextField from '@mui/material/TextField';
+
+const Navbar=()=> {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar variant="dense">
+          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 30 }}>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit" component="div">
+           ADD  NEW  PATIENTS.....
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
 
 const Home = () => {
-  const [newItem, setNewItem] = useState('');
+  const [showForm, setShowForm] = useState(false);
+
+  const handleClick = () => {
+    setShowForm(true);};
 
   return (
-    <div>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Add a patient ........"
-          style={{
-            padding: '8px',
-            marginRight: '10px',
-            width: '780px',
-            textAlign: 'center',
-            fontSize: '20px',
-          }}
-        />
-        <button
-          id="button1"
-          style={{
-            padding: '8px 15px',
-            cursor: 'pointer',
-            color: 'rgb(220, 220, 224)',
-            backgroundColor: 'rgb(21, 77, 47)',
-            width: '100px',
-          }}
-        >
-          Add
-        </button>
-      </div>
-    </div>
+    <div>   
+          <Button variant="contained" color="primary" onClick={handleClick}>
+        Add a new patient
+      </Button>
+      {showForm && <Addtask />}       
+      </div>    
   );
 };
+
+
+
+const Addtask=()=>{
+  return(
+    <Box
+    component="form"
+    sx={{
+      '& .MuiTextField-root': { m: 2, width: '35ch' },
+    }}
+    noValidate
+    autoComplete="off"
+ >
+<form className="add-form">       
+      
+      <div>
+        <TextField label="Name" id="filled-size-small" />   
+        <TextField  label="Age" id="filled-size-normal"  />        
+      </div>
+      <div>
+        <TextField  label="Gender" id="standard-size-small"  />         
+        <TextField  label="Telephone-no" id="standard-size-normal"  />        
+       </div>
+<br></br>
+<input type="submit" value="submit"/>
+ </form>
+ </Box>
+  )
+}
 
 const Employees = () => {
   const [data, setData] = useState([
@@ -43,74 +79,48 @@ const Employees = () => {
 
   return (
     <div>
-      <table
-        style={{
-          width: '800px',
-          height: '30px',
-          textAlign: 'center',
-          backgroundColor: 'rgb(141, 181, 223)',
-          color: 'rgb(12, 11, 11)',
-        }}
-      >
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Telephone_No</th>
-          </tr>
-        </thead>
-        <tbody>
+      <table>             
+          <TableRow style={{
+            color:"white",
+            backgroundColor:"black",
+          }}>          
+            <TableCell>Name</TableCell>
+            <TableCell  >Age</TableCell>
+            <TableCell >Gender</TableCell>
+            <TableCell >Telephone_No</TableCell>
+            <TableCell ></TableCell>
+          </TableRow>  
+       
           {data.map((item) => (
-            <tr key={item.Name}>
-              <td>{item.Name}</td>
-              <td>{item.Age}</td>
-              <td>{item.Gender}</td>
-              <td>{item.telephone_No}</td>
-              <td>
-                <button
-                  id="button1"
-                  style={{
-                    padding: '8px 15px',
-                    cursor: 'pointer',
-                    color: 'rgb(220, 220, 224)',
-                    backgroundColor: 'rgb(21, 77, 47)',
-                    width: '100px',
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  id="button2"
-                  style={{
-                    padding: '8px 15px',
-                    cursor: 'pointer',
-                    color: 'rgb(13, 13, 13)',
-                    backgroundColor: 'rgb(244, 9, 9)',
-                    width: '100px',
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <TableRow key={item.Name} >
+              <TableCell  align="right">{item.Name}</TableCell>
+              <TableCell  align="right">{item.Age}</TableCell>
+              <TableCell  align="right">{item.Gender}</TableCell>
+              <TableCell  align="right">{item.telephone_No}</TableCell>
+              <TableCell  align="right">
+                <Button variant="contained" color="primary"style={{ margin: '10px'}}>Edit </Button>
+                
+                <Button variant="contained" color="success">Delete </Button>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
+        
       </table>
     </div>
   );
 };
 
-function Doctor() {
+function App() {
   return (
     <div className="App">
-      <h1>Add Patients</h1>
-     <br></br>
-      <Home />
-      <br />
-      <Employees />
+      <Navbar />    
+    <br />
+    <br />   
+    <Home />
+    <br />
+    <Employees />
     </div>
   );
 }
 
-export default Doctor;
+export default App;
