@@ -11,9 +11,9 @@ namespace back_end.Controllers
     [ApiController]
     public class DoctorController : ControllerBase
     {
-        private readonly DoctorDBContext _DoctorContext;
+        private readonly PharmacyDBContext _DoctorContext;
 
-        public DoctorController(DoctorDBContext DoctorContext)
+        public DoctorController(PharmacyDBContext DoctorContext)
         {
             _DoctorContext = DoctorContext;
         }
