@@ -64,14 +64,33 @@ namespace back_end.Controllers
             {
                 return NotFound();
             }
-            var employee = await _labContext.Labtest.FindAsync(id);
-            if (employee == null)
+            var tst = await _labContext.Labtest.FindAsync(id);
+            if (tst == null)
             {
                 return NotFound();
             }
-            _labContext.Labtest.Remove(employee);
+            _labContext.Labtest.Remove(tst);
             await _labContext.SaveChangesAsync();
 
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateLabTest(int id,Lab lb)
+        {
+            if(id!= lb.ID)
+            {
+                return BadRequest();
+            }
+            _labContext.Entry(lb).State= EntityState.Modified;
+            try
+            {
+                await _labContext.SaveChangesAsync();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                throw;
+            }
             return Ok();
         }
     }
