@@ -78,6 +78,8 @@ export default function Lab() {
     })
   }
 
+
+
   const deleteData=()=>{
 
   }
