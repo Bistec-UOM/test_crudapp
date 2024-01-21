@@ -121,11 +121,11 @@ function App() {
               <TableCell  align="right">{item.name}</TableCell>
               <TableCell  align="right">{item.age}</TableCell>
               <TableCell  align="right">{item.gender}</TableCell>
-              <TableCell  align="right">{item.telephone_No}</TableCell>
+              <TableCell  align="right">{item.telephone_no}</TableCell>
               <TableCell  align="right">
                 <Button variant="contained" color="primary"style={{ margin: '10px'}}>Edit </Button>
                 
-                <Button variant="contained" color="success">Delete </Button>
+                <Button variant="contained" color="success" >Delete </Button>
               </TableCell>
             </TableRow>
           ))}
