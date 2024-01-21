@@ -38,15 +38,14 @@ builder.Services.AddDbContext<LabContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
 });
-builder.Services.AddDbContext<PharmacyDBContext>(option =>
+builder.Services.AddDbContext<DoctorDBContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
 });
-builder.Services.AddDbContext<PharmacyDBContext>(option =>
+builder.Services.AddDbContext<PharmacyDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("defaultString"));
 });
-
 var app = builder.Build();
 
 
