@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back_end.Data
 {
-    public class DoctorDBContext : DbContext
+    public class PharmacyDBContext : DbContext
     {
-        public DoctorDBContext(DbContextOptions<DoctorDBContext> options) : base(options)
+        public PharmacyDBContext(DbContextOptions<PharmacyDBContext> options) : base(options)
         {
 
         }
