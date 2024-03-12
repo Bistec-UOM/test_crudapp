@@ -25,7 +25,7 @@ function App() {
   const [Age,setAge]=useState('');
   const [Gender,setGender]=useState('');
   const [Telephone_no,setTelephone_no]=useState('');
-
+  const [edit,setEdit]=useState(false)
 
   const fetchData=()=>{
     axios.get('http://localhost:5272/api/Doctor')
@@ -52,10 +52,21 @@ function App() {
       console.log(error)
     })
   }
+  const deleteData = (id) => {
+    axios.delete(`http://localhost:5272/api/Doctor/${id}`)
+    .then(() => {
+      fetchData();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+  
+ 
 
   return (
+    //for navigation bar
     <div className="App">
-
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar variant="dense">
@@ -68,7 +79,6 @@ function App() {
         </Toolbar>
       </AppBar>
     </Box>
-
     <br />
     <br />   
     
@@ -99,17 +109,13 @@ function App() {
         </Box>
         
         }
-
-
-
       </div>  
-
-    <br />
+      <br />
   
     <div>
-      <table style={{width:'100%',}} >             
+      <table style={{width:'75%',margin: 'auto',}} >             
           <TableRow style={{color:"white",backgroundColor:"black",}}>          
-            <TableCell align="right">Name</TableCell>
+            <TableCell align="center">Name</TableCell>
             <TableCell align="right" >Age</TableCell>
             <TableCell align="right">Gender</TableCell>
             <TableCell align="right" >Telephone_No</TableCell>
@@ -118,14 +124,13 @@ function App() {
        
           {load.map((item) => (
             <TableRow key={item.id} >
-              <TableCell  align="right">{item.name}</TableCell>
+              <TableCell  align="center">{item.name}</TableCell>
               <TableCell  align="right">{item.age}</TableCell>
               <TableCell  align="right">{item.gender}</TableCell>
               <TableCell  align="right">{item.telephone_no}</TableCell>
               <TableCell  align="right">
-                <Button variant="contained" color="primary"style={{ margin: '10px'}}>Edit </Button>
-                
-                <Button variant="contained" color="success" >Delete </Button>
+                <Button variant="contained" color="primary"style={{ margin: '10px'}} >Edit </Button>                
+                <Button variant="contained" color="success" onClick={() => deleteData(item.id)} >Delete </Button>
               </TableCell>
             </TableRow>
           ))}
